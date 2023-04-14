@@ -1,0 +1,20 @@
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\bin\Debug\MAD - PF Hotel.exe.config
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\bin\Debug\MAD - PF Hotel.exe
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\bin\Debug\MAD - PF Hotel.pdb
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD - PF Hotel.csproj.AssemblyReference.cache
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD - PF Hotel.csproj.SuggestedBindingRedirects.cache
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.Properties.Resources.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD - PF Hotel.csproj.GenerateResource.cache
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD - PF Hotel.csproj.CoreCompileInputs.cache
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD - PF Hotel.exe
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD - PF Hotel.pdb
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.Log_in.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.AdminForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.AddHotelForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.AddClientForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.ReservationSystemForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.AddTypeOfRoomForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.ReportForHotelOcupForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.ReportForSalesForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.OperatorForm.resources
+C:\Users\artur\source\repos\MAD - PF Hotel\MAD - PF Hotel\obj\Debug\MAD___PF_Hotel.AddOperator.resources
