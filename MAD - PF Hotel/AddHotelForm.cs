@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,9 @@ namespace MAD___PF_Hotel
         public AddHotelForm()
         {
             InitializeComponent();
+            cBoxCountry.DataSource = FillCountriesBox();
+            cBoxCountry.DisplayMember = "COUNTRY_NAME";
+            cBoxCountry.ValueMember = "ID_COUNTRY";
         }
 
         private void HODForm_Load(object sender, EventArgs e)
@@ -40,18 +44,56 @@ namespace MAD___PF_Hotel
             new_address.Suburb_Name = txtboxHotelSuburb.Text;
             new_address.Zip_Code = txtboxHotelZipCode.Text;
 
-
-            bool resultHotel = sqlConexion.AddHotel(new_hotel, new_address);
-
-            if (resultHotel)
+            if (HotelValidation(new_hotel) || AddressValidation(new_address))
             {
-                this.Hide();
-                MessageBox.Show("The operator fue agregado a la base de datos.");
+                MessageBox.Show("Please, fill all the text box from the form.");
             }
             else
             {
-                MessageBox.Show("The email or password are invalid");
+                bool resultHotel = sqlConexion.AddHotel(new_hotel, new_address);
+
+                if (resultHotel)
+                {
+                    this.Hide();
+                    MessageBox.Show("The operator fue agregado a la base de datos.");
+                }
+                else
+                {
+                    MessageBox.Show("The email or password are invalid");
+                }
             }
+        }
+
+        private bool HotelValidation(HotelModel aux_model)
+        {
+            if (aux_model.Hotel_Name == null || aux_model.Number_Floors == 0 || aux_model.Number_Rooms == 0 || aux_model.Begin_Operations == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool AddressValidation(AddressModel aux_model)
+        {
+            if (aux_model.Street_Name == null || aux_model.House_Number == null || aux_model.Suburb_Name == null || aux_model.Zip_Code == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        public DataTable FillCountriesBox() 
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM HOTELS_SYSTEM.COUNTRY_DATA", sqlConexion.StartConnection());
+            da.SelectCommand.CommandType = CommandType.Text;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
         }
     }
 }

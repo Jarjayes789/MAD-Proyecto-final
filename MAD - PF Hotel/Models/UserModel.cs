@@ -8,6 +8,7 @@ namespace MAD___PF_Hotel.Models
 {
     internal class UserModel
     {
+        public int Id_User { get; set; }
         public string Names { get; set; }
         public string Last_Name_One { get; set; }
         public string Last_Name_Two { get; set; }
@@ -15,6 +16,8 @@ namespace MAD___PF_Hotel.Models
         public int Payroll_No { get; set; }
         public string Email { get; set; }
         public string User_Password { get; set; }
-        public string User_Type { get; set; }
+        public int Id_Address { get; set; }
+        public int Id_Phone { get; set; }
+        public int User_Type { get; set; }
     }
 }

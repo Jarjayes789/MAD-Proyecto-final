@@ -42,7 +42,7 @@ namespace MAD___PF_Hotel
             new_user.Payroll_No = int.Parse(txtboxPayrollNum.Text);
             new_user.Email = txtboxEmailOp.Text;
             new_user.User_Password = txtboxPasswordOp.Text;           
-            new_user.User_Type = cboxTypeOfUser.Text;
+            new_user.User_Type = int.Parse(cboxTypeOfUser.Text);
 
             new_address.Street_Name = txtboxStreetOp.Text;
             new_address.House_Number = txtboxHouseNoOp.Text;

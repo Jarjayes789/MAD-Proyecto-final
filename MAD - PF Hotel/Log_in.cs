@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using MAD___PF_Hotel.ConexionDB;
+using MAD___PF_Hotel.Models;
 
 namespace MAD___PF_Hotel
 {
@@ -33,13 +34,24 @@ namespace MAD___PF_Hotel
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            int result = sqlConexion.Login(txtEmail.Text, txtPassword.Text);
-            if (result == 1) {
-                AdminForm adminForm = new AdminForm();
-                this.Hide();
-                adminForm.Show();
+            var result = sqlConexion.Login(txtEmail.Text, txtPassword.Text);
+            if (result == 0) {
+                UserModel login_account = new UserModel();
+                login_account = sqlConexion.GetUserData(txtEmail.Text);
+                if (login_account.User_Type == 0)
+                {
+                    AdminForm adminForm = new AdminForm();
+                    this.Hide();
+                    adminForm.Show();
+                }
+                else 
+                {
+                    OperatorForm OperatForm = new OperatorForm();
+                    this.Hide();
+                    OperatForm.Show();
+                }
             }
-            else if(result == 0)
+            else if(result == 1)
             {
                 MessageBox.Show("The email or password are invalid");
             }

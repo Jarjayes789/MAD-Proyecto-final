@@ -33,6 +33,7 @@ namespace MAD___PF_Hotel
             pnlSubMenuSR.Visible = false; //Hide submenu of System Reports
             pnlSubMenuHotelM.Visible = false; //Hide submenu of Hotel Management
             pnlSubMenuEmployee.Visible = false; //Hide submenu of Employee Management
+            pnlSubMenuReservation.Visible = false;
         }
         
         private void hideSubmenu() 
@@ -43,6 +44,8 @@ namespace MAD___PF_Hotel
                 pnlSubMenuHotelM.Visible = false;
             if (pnlSubMenuEmployee.Visible == true)
                 pnlSubMenuEmployee.Visible = false;
+            if (pnlSubMenuReservation.Visible == true)
+                pnlSubMenuReservation.Visible = false;
         }
         private void showSubMenu(Panel subMenu) 
         {
@@ -88,12 +91,12 @@ namespace MAD___PF_Hotel
 
         #endregion
 
-        //#region Cancel_Reservation
-        ////private void btnCR_Click(object sender, EventArgs e)
-        ////{
-
-        ////}
-        //#endregion
+        #region Cancel_Reservation
+        private void btnReservations_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlSubMenuReservation);
+        }
+        #endregion
 
         #region Hotel_Managment
         private void btnHM_Click(object sender, EventArgs e)
@@ -156,5 +159,6 @@ namespace MAD___PF_Hotel
             hideSubmenu();
         }
         #endregion
+
     }
 }

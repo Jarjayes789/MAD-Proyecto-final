@@ -230,7 +230,7 @@
             this.btnAddTypeOfRoom.Name = "btnAddTypeOfRoom";
             this.btnAddTypeOfRoom.Size = new System.Drawing.Size(152, 37);
             this.btnAddTypeOfRoom.TabIndex = 88;
-            this.btnAddTypeOfRoom.Text = " ";
+            this.btnAddTypeOfRoom.Text = " Add room";
             this.btnAddTypeOfRoom.UseVisualStyleBackColor = true;
             this.btnAddTypeOfRoom.Click += new System.EventHandler(this.btnAddTypeOfRoom_Click);
             // 

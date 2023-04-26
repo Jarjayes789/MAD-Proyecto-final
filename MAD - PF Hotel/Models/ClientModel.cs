@@ -11,7 +11,7 @@ namespace MAD___PF_Hotel.Models
         public string Names { get; set; }
         public string Last_Name_One { get; set; }
         public string Last_Name_Two { get; set; }
-        public int RFC { get; set; }
+        public string RFC { get; set; }
         public DateTime Date_Birth { get; set; }
         public string Marital_Status { get; set; }
         public string Email { get; set; }

@@ -25,9 +25,10 @@ namespace MAD___PF_Hotel
 
         private void btnAddTypeOfRoom_Click(object sender, EventArgs e)
         {
-            UserModel new_user = new UserModel();
-            AddressModel new_address = new AddressModel();
-            PhoneModel new_phone = new PhoneModel();
+            //UserModel new_user = new UserModel();
+            //AddressModel new_address = new AddressModel();
+            //PhoneModel new_phone = new PhoneModel();
+            RoomTypeModel new_room = new RoomTypeModel();
 
             //new_user.Names = txtboxFirstNameOp.Text;
             //new_user.Last_Name_One = txtboxLastName1.Text;
@@ -58,6 +59,19 @@ namespace MAD___PF_Hotel
             //{
             //    messagebox.show("the email or password are invalid");
             //}
+        }
+
+        private bool RoomValidation(RoomTypeModel aux_model)
+        {
+            if (aux_model.roomType_name == null || aux_model.room_quantity == 0 || aux_model.bed_quantity == 0 ||
+                aux_model.price_night == 0 || aux_model.discount == 0 || aux_model.amount_people == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

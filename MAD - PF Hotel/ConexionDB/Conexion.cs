@@ -43,13 +43,13 @@ namespace MAD___PF_Hotel.ConexionDB
             {
                 con.ConnectionString = Connection;
                 con.Open();
-
+                
                 SqlCommand cmd = new SqlCommand("spLogin", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 cmd.Parameters.AddWithValue("@p_email", email);
                 cmd.Parameters.AddWithValue("p_password", password);
 
+               // SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 if (dr.Read())
@@ -64,21 +64,21 @@ namespace MAD___PF_Hotel.ConexionDB
                     //else {
                     //    return 2;
                     //}
-                    return dr.GetInt32(0);
+                    //return dr.GetInt32(0);
+                    return 0;
                 }
 
             }
             catch (SqlException e)
             {
                 MessageBox.Show("Los datos ingresados no coinciden." + e.ToString());
+                return 1;
             }
             finally 
             { 
                 con.Close();
             }
-
-            return 0; 
-        
+            return 1;
         }
 
         public bool AddOperator(UserModel added_User, AddressModel added_address, PhoneModel added_phone)
@@ -167,7 +167,7 @@ namespace MAD___PF_Hotel.ConexionDB
             return false;
         }
 
-        public bool AddClient(ClientModel added_client, AddressModel added_address, PhoneModel added_phone)
+        public int AddClient(ClientModel added_client, AddressModel added_address, PhoneModel added_phone)
         {
             try
             {
@@ -176,13 +176,14 @@ namespace MAD___PF_Hotel.ConexionDB
 
                 SqlCommand cmd_c = new SqlCommand("spAddClient", con);
                 cmd_c.CommandType = CommandType.StoredProcedure;
-                cmd_c.Parameters.AddWithValue("@p_hotel_name", added_client.Names);
-                cmd_c.Parameters.AddWithValue("@p_number_floors", added_client.Last_Name_One);
-                cmd_c.Parameters.AddWithValue("@p_number_rooms", added_client.Last_Name_Two);
-                cmd_c.Parameters.AddWithValue("@p_begin_operation", added_client.Email);
-                cmd_c.Parameters.AddWithValue("@p_number_floors", added_client.RFC);
-                cmd_c.Parameters.AddWithValue("@p_number_rooms", added_client.Marital_Status);
-                cmd_c.Parameters.AddWithValue("@p_begin_operation", added_client.Date_Birth);
+                cmd_c.Parameters.AddWithValue("@p_first_name", added_client.Names);
+                cmd_c.Parameters.AddWithValue("@p_last_name_one", added_client.Last_Name_One);
+                cmd_c.Parameters.AddWithValue("@p_last_name_two", added_client.Last_Name_Two);
+                cmd_c.Parameters.AddWithValue("@p_rfc", added_client.RFC);
+                cmd_c.Parameters.AddWithValue("@p_date_birth", added_client.Date_Birth);
+                cmd_c.Parameters.AddWithValue("@p_email", added_client.Email);
+                cmd_c.Parameters.AddWithValue("@p_marital_status", added_client.Marital_Status);
+                cmd_c.Parameters.AddWithValue("@p_reference", added_client.Reference);
 
                 cmd_c.Parameters.AddWithValue("@p_street_name", added_address.Street_Name);
                 cmd_c.Parameters.AddWithValue("@p_house_number", added_address.House_Number);
@@ -196,22 +197,61 @@ namespace MAD___PF_Hotel.ConexionDB
 
                 if (dr.Read())
                 {
-                    return dr.GetBoolean(0);
+                    return 1;
                 }
-
             }
             catch (SqlException e)
             {
                 MessageBox.Show("The data don´t apply on this format." + e.ToString());
-                return false;
+                return 1;
             }
             finally
             {
                 con.Close();
             }
 
-            return false;
+            return 1;
         }
 
+        public UserModel GetUserData(string email)
+        {
+            try
+            {
+                con.ConnectionString = Connection;
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("spGetUserData", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@p_email", email);
+
+               // SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                SqlDataReader dr = cmd.ExecuteReader();
+                UserModel logged_user = new UserModel();
+
+               while (dr.Read())
+                {
+                    logged_user.Id_User = Convert.ToInt32(dr["ID_USER"]);
+                    logged_user.Names = dr["NAMES"].ToString();
+                    logged_user.Last_Name_One = dr["LAST_NAME_ONE"].ToString();
+                    logged_user.Last_Name_Two = dr["LAST_NAME_TWO"].ToString();
+                    logged_user.Date_Birth = Convert.ToDateTime(dr["DATE_BIRTH"]);
+                    logged_user.Payroll_No = Convert.ToInt32(dr["PAYROLL_NO"]);
+                    logged_user.Email = dr["EMAIL"].ToString();
+                    logged_user.User_Type = Convert.ToInt32(dr["USER_TYPE"]);
+                    logged_user.Id_Address = Convert.ToInt32(dr["ID_ADDRESS"]);
+                    logged_user.Id_Phone = Convert.ToInt32(dr["ID_PHONE"]);
+                }
+                return logged_user;
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Hubo un error al retornar los datos." + e.ToString());
+            }
+            finally
+            {
+                con.Close();
+            }
+            return null;
+        }
     }
 }
